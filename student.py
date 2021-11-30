@@ -47,8 +47,7 @@ if __name__ == '__main__':
     model.add(tf.keras.layers.Dense(5, activation=tf.nn.softmax))
 
     # train
-    #opt = tf.keras.optimizers.Adam(learning_rate=0.0005)
-    model.compile(optimizer='adam', # 'adam'
+    model.compile(optimizer='adam',
         loss='sparse_categorical_crossentropy',
         metrics=['accuracy'])
     
