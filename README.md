@@ -1,6 +1,8 @@
 # tiny_student_model
 A student model using tiny sleep net as the teacher model. 
 
+Model created using tensorflow and keras version 2.7.0
+
 Credit:
 @INPROCEEDINGS{Supratak2020,
     title = {TinySleepNet: An Efficient Deep Learning Model for Sleep Stage Scoring based on Raw Single-Channel EEG},
