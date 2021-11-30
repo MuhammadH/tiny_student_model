@@ -28,6 +28,9 @@ if __name__ == '__main__':
         pred_data = load(pred_file)
         y_train = np.concatenate((y_train, pred_data['y_pred']))
 
+    print("x trainsing length")
+    print(len(x_train))
+
     # get unseen testing data
     eval_test_file = 'eeg_no_pred/' + 'SC4201E0.npz'
     eval_test_data = load(eval_test_file)
@@ -38,11 +41,14 @@ if __name__ == '__main__':
     model = tf.keras.models.Sequential()
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
+    tf.random.set_seed(0)
+    model.add(tf.keras.layers.Dropout(.05))
     model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
     model.add(tf.keras.layers.Dense(5, activation=tf.nn.softmax))
 
     # train
-    model.compile(optimizer='adam',
+    #opt = tf.keras.optimizers.Adam(learning_rate=0.0005)
+    model.compile(optimizer='adam', # 'adam'
         loss='sparse_categorical_crossentropy',
         metrics=['accuracy'])
     
